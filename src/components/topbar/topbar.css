@@ -1,0 +1,42 @@
+.topbarContainer{
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+
+}
+
+.topbarLeft{
+    flex: 5;
+}
+
+.topbarCenter{
+    flex: 5;
+    align-items: center;
+}
+
+.topbarRight{
+    flex:2;
+}
+.register{
+    padding: 0px 15px 0px 35px;
+    font-size: 18px;
+}
+.login{
+    padding: 0px 15px;
+    font-size: 18px;
+}
+.logo{
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+.searchBar{
+    height: 25px;
+    width: 100%;
+    border-radius: 30px;
+}
