@@ -15,10 +15,64 @@
 
 .title{
 
-    font-size:60px;
+    font-size:70px;
     position: fixed;
     justify-content: left;
     top: 20%;
     left: 5%;
     color: white;
+    text-align: left;
+}
+
+.fieldSignup{   
+    width: 90%;
+    border-radius: 20px;
+    height: 40px;
+    font-size: large;
+}
+
+.boxFront{
+
+    left: 5%;
+    top: 31%;
+    padding-left: 4px;
+    position: fixed;
+    display:flex;
+    flex-direction: column;
+
+}
+
+.productTitle{
+
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+
+.signupForm{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+}
+
+
+
+
+.firstName{
+    flex: 3;
+}
+
+.lastName{
+    flex: 3;
+}
+
+.email{
+    flex: 8;
+}
+
+.signup{
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -10,10 +10,11 @@ export default function Topbar() {
             </span>
         </div>
         <div className="topbarCenter">
-                <input placeholder='  Search Portfolios and Users...' className='searchBar'/>
+            <input placeholder='  Search Portfolios and Users...' className='searchBar'/>
         </div>
         <div className="topbarRight">
             <div className="topbarLinks">
+                <a href="../../pages/portfolios/portfolios.jsx" className='topbarLinks'><span className='portfoliosButton'>Portfolios</span></a>
                 <span className='register'>Register</span>
                 <span className='login'>Login</span>
             </div>
