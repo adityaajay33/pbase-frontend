@@ -1,0 +1,10 @@
+.portfoliosContainer{
+
+    display: flex;
+    background-color: rgb(255, 255, 255);
+}
+
+*{
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}

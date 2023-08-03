@@ -1,6 +1,7 @@
 import React from 'react'
 import "./topbar.css"
 
+
 export default function Topbar() {
   return (
     <div className="topbarContainer">
@@ -15,8 +16,8 @@ export default function Topbar() {
         <div className="topbarRight">
             <div className="topbarLinks">
                 <a href="../../pages/portfolios/portfolios.jsx" className='topbarLinks'><span className='portfoliosButton'>Portfolios</span></a>
-                <span className='register'>Register</span>
-                <span className='login'>Login</span>
+                <a href='../../pages/register/Register.jsx' className='topbarLinks'><span className='register'>Register</span></a>
+                <a href='../../pages/login/login.jsx' className='topbarLinks'><span className='login'>Login</span></a>
             </div>
         </div>
     </div> 
