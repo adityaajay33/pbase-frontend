@@ -34,56 +34,6 @@
     padding-top: 6%;
 }
 
-.inputField{
-    width: 100%;
-    border-radius: 10px;
-    font-size: 100%;
-    margin: 4%;
-}
-
-.firstNameReg{
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.firstNameReg>*{
-    margin-right: 2%;
-}
-
-.lastNameReg{
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.eMail{
-
-    grid-column: span 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.institution{
-
-    grid-column: span 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.signupButton{
-
-    display: flex;
-    grid-column: span 2;
-    justify-content: center;
-    align-items: center;
-}
-
 .button-11 {
     appearance: button;
     backface-visibility: hidden;
@@ -128,4 +78,18 @@
 
   }
   
+
+.formReg{
+
+    margin-left: 20px;
+    width: 400px;
+    margin-top: 5%;
+}
+
+.signupButton{
+    margin-left: 40%;
+    margin-top: 3%;
+}
+
+
   
