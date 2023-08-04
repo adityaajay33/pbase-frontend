@@ -3,30 +3,43 @@ import "./login-form.css"
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import {useState} from 'react'
+
+
 
 export default function LoginForm() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [register, setRegister] = useState(false);
+
   return (
     <div className="loginPage">
       <div className="boxBlack">
         <div className="titleLog">Login</div>
-        <Form className="formReg">
-            <Row>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter E-mail" />
-              </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-            </Row>
+        <Form>
+          <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+            <Form.Label column sm={2}>
+              Email
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control type="email" placeholder="Email" />
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+            <Form.Label column sm={2}>
+              Password
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control type="password" placeholder="Password" />
+            </Col>
+          </Form.Group>
             
-            <button variant="primary" type="submit" className="signupButton">
-              Login
-            </button>
-          </Form>
+          <button variant="primary" type="submit" className="signupButton">
+            Login
+          </button>
+        </Form>
       </div>
     </div>
   )

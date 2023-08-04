@@ -35,12 +35,6 @@
     padding-top: 10%;
 }
 
-.inputField{
-    width: 100%;
-    border-radius: 10px;
-    font-size: 100%;
-    margin: 4%;
-}
 
 .eMailLogin{
 
@@ -101,5 +95,24 @@
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
   }
   
+  .inputField{
+
+    width: 90%;
+    height: 30px;
+    font-size: 15px;
+  }
   
+  .fieldLabel{
+
+    height: 30px;
+    margin: 20px 5px 5px 0px;
+
+  }
+
+  .mb-3{
+
+    margin-top: 10px;
+  }
+
+
   

@@ -1,53 +1,124 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./registerForm.css"
 import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 export default function RegisterForm() {
+
+  const [firstName, SetFirstName] = useState("");
+  const [lastName, SetLastName] = useState("");
+  const [institution, SetInstitution] = useState("");
+  const [email, SetEmail] = useState("");
+  const [password, SetPassword] = useState("");
+  const [register, SetRegister] = useState(false);
+
+  const handleSubmit = (e) => {
+    // prevent the form from refreshing the whole page
+    e.preventDefault();
+    
+
+    const configuration = {
+      method:'post',
+      url: process.env.WEBSITE_URL,
+      data:{
+        firstName,
+        lastName,
+        institution,
+        email,
+        password
+      }}
+  
+      
+  
+      axios(configuration).then((result) => {
+          SetRegister(true);
+        })
+        .catch((error) => {
+          error = new Error();
+        });
+
+   }
+
   return (
     <div className="registerPage">
       <div className="boxWhite">
         <div className="titleReg">Register</div>
-        <Form className="formReg">
-            <Row>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text" placeholder="First Name" />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text" placeholder="Last Name" />
-                </Form.Group>
-              </Col>
-            
-            </Row>
-            <Row>
-              <Form.Group className="mb-3">
-                <Form.Label>Institution</Form.Label>
-                <Form.Control type="text" placeholder="Institution" />
-              </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group className="mb-3" controlId="formGroupEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter E-mail" />
-              </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-            </Row>
-          <button variant="primary" type="submit" className="signupButton">
-            Sign Up
-          </button>
+        <Form onSubmit={(e)=>handleSubmit(e)}>
+          <Form.Group>
+            <Form.Label>First Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="firstName"
+              value={firstName}
+              onChange={(e) => SetFirstName(e.target.value)}
+              placeholder="First Name"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Last Name</Form.Label>
+            <Form.Control
+              type="text"
+              name="lastName"
+              value={lastName}
+              onChange={(e) => SetLastName(e.target.value)}
+              placeholder="Last Name"
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Institution</Form.Label>
+            <Form.Control
+              type="text"
+              name="Institution"
+              value={institution}
+              onChange={(e) => SetInstitution(e.target.value)}
+              placeholder="Institution"
+            />
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => SetEmail(e.target.value)}
+              placeholder="E-mail"
+            />
+          </Form.Group>
+
+          {/* password */}
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => SetPassword(e.target.value)}
+              placeholder="Password"
+            />
+          </Form.Group>
+
+          {/* submit button */}
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Register
+          </Button>
+
+          {register ? (
+          <p className="text-success">You Are Registered Successfully</p>
+          ) : (
+            <p className="text-danger">You Are Not Registered</p>
+          )}
         </Form>
+        
+
       </div>
     </div>
   )
