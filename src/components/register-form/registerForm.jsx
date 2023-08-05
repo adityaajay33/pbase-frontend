@@ -3,9 +3,8 @@ import "./registerForm.css"
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import dotenv from "dotenv";
-
-dotenv.config();
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function RegisterForm() {
 
@@ -23,7 +22,7 @@ export default function RegisterForm() {
 
     const configuration = {
       method:'post',
-      url: process.env.WEBSITE_URL,
+      url: 'http://localhost:5000/api/user/signup',
       data:{
         firstName,
         lastName,
@@ -47,60 +46,80 @@ export default function RegisterForm() {
     <div className="registerPage">
       <div className="boxWhite">
         <div className="titleReg">Register</div>
+
         <Form onSubmit={(e)=>handleSubmit(e)}>
-          <Form.Group>
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="firstName"
-              value={firstName}
-              onChange={(e) => SetFirstName(e.target.value)}
-              placeholder="First Name"
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control
-              type="text"
-              name="lastName"
-              value={lastName}
-              onChange={(e) => SetLastName(e.target.value)}
-              placeholder="Last Name"
-            />
-          </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Institution</Form.Label>
-            <Form.Control
-              type="text"
-              name="Institution"
-              value={institution}
-              onChange={(e) => SetInstitution(e.target.value)}
-              placeholder="Institution"
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={email}
-              onChange={(e) => SetEmail(e.target.value)}
-              placeholder="E-mail"
-            />
-          </Form.Group>
+        <Row>
 
-          {/* password */}
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              name="password"
-              value={password}
-              onChange={(e) => SetPassword(e.target.value)}
-              placeholder="Password"
-            />
-          </Form.Group>
+            <Col>
+              <Form.Group>
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="firstName"
+                  value={firstName}
+                  onChange={(e) => SetFirstName(e.target.value)}
+                  placeholder="First Name"
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group>
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="lastName"
+                  value={lastName}
+                  onChange={(e) => SetLastName(e.target.value)}
+                  placeholder="Last Name"
+                />
+              </Form.Group>
+            </Col>
+
+          </Row>
+
+          <Row>
+            <Form.Group>
+              <Form.Label>Institution</Form.Label>
+              <Form.Control
+                type="text"
+                name="Institution"
+                value={institution}
+                onChange={(e) => SetInstitution(e.target.value)}
+                placeholder="Institution"
+              />
+            </Form.Group>
+          </Row>
+
+          <Row>
+
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => SetEmail(e.target.value)}
+                placeholder="E-mail"
+              />
+            </Form.Group>
+
+          </Row>
+
+          <Row>
+            {/* password */}
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => SetPassword(e.target.value)}
+                placeholder="Password"
+              />
+            </Form.Group>
+          </Row>
+
 
           {/* submit button */}
           <Button
