@@ -28,7 +28,7 @@ export default function LoginForm() {
       },
     };
 
-    axios(configuration).then((result)=>{setLogin(true); cookies.set("TOKEN", result.data.token, {path: "/",})})
+    axios(configuration).then((result)=>{setLogin(true); cookies.set("TOKEN", result.data.token, {path: "/",}); window.location.href = "/pages/userHome/UserHome.jsx"})
     .catch((error)=>{error = new Error();})
 
   }
