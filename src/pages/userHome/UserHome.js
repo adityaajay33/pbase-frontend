@@ -2,7 +2,7 @@ import React from 'react'
 import "./UserHome.css"
 import Topbar from '../../components/topbar/topbar'
 import Footer from '../../components/footer/footer'
-import Dashboard from '../../components/Dashboard/Dashboard'
+import Dashboard from '../../components/dashboard/Dashboard'
 
 export default function UserHome() {
   return (

@@ -1,6 +1,6 @@
 .containerProfile{
 
-    width: 30%;
+    width: 25%;
     background-color: rgb(255, 255, 255);
 }
 
@@ -18,4 +18,22 @@
 
     text-align: center;
     font-size: 175%;
+    padding: 5px;
+    padding-top: 15px;
+}
+
+.pictureUser{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.userAvatar{
+
+    background-color: rgb(145, 145, 145);
+    border-radius: 10px;
+    height: 200px;
+    width: 200px;
 }
