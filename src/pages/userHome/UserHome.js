@@ -2,12 +2,13 @@ import React from 'react'
 import "./UserHome.css"
 import Topbar from '../../components/topbar/topbar'
 import Footer from '../../components/footer/footer'
+import Dashboard from '../../components/Dashboard/Dashboard'
 
 export default function UserHome() {
   return (
     <div>
         <Topbar />
-        <p>This is the home page for an authorized user.</p>
+        <Dashboard />
         <Footer />
     </div>
   )
