@@ -51,11 +51,10 @@ export default function UserProfile() {
               </div>
             </div>
             <div className="nameUser">
-              {firstName}
+              {firstName} {lastName}
             </div>
             <div className="backgroundUser">
-
-
+              {institution}
             </div>
         </div>
     </div>

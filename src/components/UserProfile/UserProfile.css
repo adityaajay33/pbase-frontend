@@ -37,3 +37,10 @@
     height: 200px;
     width: 200px;
 }
+
+.backgroundUser{
+
+    text-align: center;
+    font-size: 100%;
+    color: rgb(68, 66, 66);
+}
