@@ -23,22 +23,20 @@ export default function UserProfile() {
     sessionStorage.setItem('userData', JSON.stringify(decodedToken));
     
     const userData = JSON.parse(sessionStorage.getItem('userData'));
-    const userID = userData.id;
+    const userID = userData.userId;
 
-    const baseUrl = 'http://localhost:5000/api/user/';
-
-    console.log(`${baseUrl}${userID}`)
+    const baseUrl = 'http://localhost:5000/api/user/'+String(userID);
 
     const configuration = {
       method: 'get',
-      url: `${baseUrl}${userID}`
+      url: baseUrl
     };
 
     axios(configuration)
       .then((result) => {
-        setFirstName(result.data.firstName);
-        setLastName(result.data.lastName);
-        setInstitution(result.data.institution);
+        setFirstName(result.data.userLink.firstName);
+        setLastName(result.data.userLink.lastName);
+        setInstitution(result.data.userLink.institution);
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
