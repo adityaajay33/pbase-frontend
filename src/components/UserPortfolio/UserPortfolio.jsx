@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useDropzone } from 'react-dropzone';
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
+import { imageconverter } from '../image-converter/image-converter';
 
 const cookies = new Cookies();
 
@@ -20,7 +21,6 @@ export default function UserPortfolio() {
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-    console.log('File: ', selectedFile);
   };
 
   const handleDrop = (e) => {
@@ -30,11 +30,12 @@ export default function UserPortfolio() {
 
   const handleUpload = async () => {
     if (file) {
-      var formData = new FormData();
+      const formData = new FormData();
       formData.append('user', user);
-      console.log(user);
       formData.append('file', file);
-      console.log(formData);
+      for (let obj of formData) {
+        console.log(obj);
+      }
 
       try {
         const response = await axios.post(
@@ -46,7 +47,7 @@ export default function UserPortfolio() {
             },
           }
         );
-        console.log(response.data);
+        imageconverter(response.data);
         // Handle success or update state as needed
       } catch (error) {
         console.error(error);
@@ -56,20 +57,26 @@ export default function UserPortfolio() {
   };
 
   return (
-    <div className="file-upload-container">
-      <div
-        className="drop-box"
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={handleDrop}
-      >
-        {file ? (
-          <p>File selected: {file.name}</p>
-        ) : (
-          <p>Drag and drop a file here, or click to select a file.</p>
-        )}
-        <input type="file" onChange={handleFileChange} />
+    <div>
+      <div className="file-upload-container">
+        <div
+          className="drop-box"
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={handleDrop}
+        >
+          {file ? (
+            <p>File selected: {file.name}</p>
+          ) : (
+            <p>Drag and drop a file here, or click to select a file.</p>
+          )}
+          <input type="file" onChange={handleFileChange} />
+        </div>
+        <button onClick={handleUpload}>Upload Portfolio</button>
       </div>
-      <button onClick={handleUpload}>Upload Portfolio</button>
+      <div className="userPortfolioContainer">
+            
+        <img id="imageDisplay" alt="Portfolio" />
+      </div>
     </div>
   );
 }

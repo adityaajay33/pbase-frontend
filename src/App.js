@@ -7,9 +7,13 @@ import Login from "./pages/login/login";
 import React, { useState, useEffect } from "react";
 import UserHome from "./pages/userHome/UserHome";
 import { ProtectedRoutes } from "./ProtectedRoutes";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 function App() {
 
+  console.log(cookies.get("TOKEN"));
 
 
   return (
