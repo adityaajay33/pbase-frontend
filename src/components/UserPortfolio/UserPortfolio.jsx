@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './UserPortfolio.css';
 import axios from 'axios';
-import { useDropzone } from 'react-dropzone';
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
-import { imageconverter } from '../image-converter/image-converter';
+
 
 const cookies = new Cookies();
 
@@ -46,8 +45,19 @@ export default function UserPortfolio() {
               'Content-Type': 'multipart/form-data',
             },
           }
+
         );
-        imageconverter(response.data);
+        
+        const imageBuffer = response.data;
+        const imageBlob = new Blob([imageBuffer], { type: 'image/jpeg' });
+
+        // Create a URL for the Blob
+        const imageURL = URL.createObjectURL(imageBlob);
+
+        console.log(imageURL);
+        
+        const imageDisplay = document.getElementById("imageDisplay");
+        imageDisplay.src = imageURL;
         // Handle success or update state as needed
       } catch (error) {
         console.error(error);
