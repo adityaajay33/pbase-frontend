@@ -4,7 +4,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
 
-
 const cookies = new Cookies();
 
 export default function UserPortfolio() {
@@ -43,21 +42,24 @@ export default function UserPortfolio() {
           {
             headers: {
               'Content-Type': 'multipart/form-data',
-            },
+            }
           }
 
         );
-        
-        const imageBuffer = response.data;
-        const imageBlob = new Blob([imageBuffer], { type: 'image/jpeg' });
 
-        // Create a URL for the Blob
-        const imageURL = URL.createObjectURL(imageBlob);
+        const linkRes = response.data;
+        const portfolioID = linkRes.fileId;
+        console.log(portfolioID);
 
-        console.log(imageURL);
-        
-        const imageDisplay = document.getElementById("imageDisplay");
-        imageDisplay.src = imageURL;
+        const linkUrl = 'http://localhost:5000/api/portfolios/images/'+String(portfolioID);
+
+        console.log(linkUrl);
+
+        const imageDisplay = document.getElementById('imageDisplay');
+        imageDisplay.src = linkUrl;
+
+
+
         // Handle success or update state as needed
       } catch (error) {
         console.error(error);
