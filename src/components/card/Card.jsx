@@ -1,16 +1,16 @@
 import React from 'react'
 import "./Card.css"
-import "../../assets/placeholder_img.png"
+import GreySquare from "../../assets/GreySquare.jpg"
 
-export default function UserCards({firstName, lastName, institution}) {
+export default function UserCards({ user }) {
   return (
     <div className="outerDiv">
-        <img src="../../assets/placeholder_img.png" className="pictureUser" />
+        <img src={GreySquare} className="pictureUser" alt="User Card" />
         <div className="userName">
-            {firstName} {lastName}
+            {user.firstName} {user.lastName}
         </div>
         <div className="userUniversity">
-            {institution}
+            {user.institution}
         </div>
     </div>
   )

@@ -5,33 +5,34 @@ import axios from "axios"
 
 
 export default function Feed() {
-
-  const [cards, setCards] = useState([]);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [institution, setInstitution] = useState("");
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-     const configuration ={
-      method: "get",
-      url: 'http://localhost:5000/api/portfolios/'
-     }
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/user/');
+        setUsers(response.data.users);
+        console.log(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-     axios(configuration).then((result) =>{
-      setFirstName(result.data.userLink.firstName);
-      setLastName(result.data.userLink.lastName);
-      setInstitution(result.data.userLink.institution);
-     }).catch((error) => {
-      console.error("Error fetching user data:", error);
-    });
-  }, []);
+    console.log(users);
+    fetchUsers();
+  }, [users]);
 
   return (
     <div className='feedPortfolios'>
-      {cards.map(card => (
-        <UserCards firstName={firstName} lastName="Doe" institution="TMU" />
-        ))}
-      
+      {loading ? (
+        <p>Loading...</p> 
+      ) : (
+        users.map(user => (
+          <UserCards className="cardUser" key={user._id} user={user} />
+        ))
+      )}
     </div>
   )
 }
