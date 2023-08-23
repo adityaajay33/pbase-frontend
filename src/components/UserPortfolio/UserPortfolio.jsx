@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserPortfolio.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -7,6 +7,7 @@ import jwtDecode from 'jwt-decode';
 const cookies = new Cookies();
 
 export default function UserPortfolio() {
+
   const receivedToken = cookies.get('TOKEN');
   const decodedToken = jwtDecode(receivedToken);
 
@@ -14,7 +15,40 @@ export default function UserPortfolio() {
   const userData = JSON.parse(sessionStorage.getItem('userData'));
   const user = userData.userId;
 
+  const linkData = "http://localhost:5000/api/user/userdata/"+String(user);
+
   const [file, setFile] = useState(null);
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await axios.get(linkData);
+        console.log(response.data);
+        const listUrl = response.data.idList;
+
+        const imgUrls = [];
+
+        for (let item of listUrl){
+          imgUrls.push('http://localhost:5000/api/portfolios/images/'+String(item));
+          console.log(item);
+        }
+
+        setImages(imgUrls);
+        console.log(images);
+        setLoading(false);
+      }
+      catch(err){
+        console.log(err);
+      }
+
+      
+      
+    }
+    fetchImages();
+  }, [linkData]);
+
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -27,6 +61,7 @@ export default function UserPortfolio() {
   };
 
   const handleUpload = async () => {
+
     if (file) {
       const formData = new FormData();
       formData.append('user', user);
@@ -53,12 +88,7 @@ export default function UserPortfolio() {
 
         const linkUrl = 'http://localhost:5000/api/portfolios/images/'+String(portfolioID);
 
-        console.log(linkUrl);
-
-        const imageDisplay = document.getElementById('imageDisplay');
-        imageDisplay.src = linkUrl;
-
-
+        setImages([...images, linkUrl]);
 
         // Handle success or update state as needed
       } catch (error) {
@@ -86,8 +116,13 @@ export default function UserPortfolio() {
         <button onClick={handleUpload}>Upload Portfolio</button>
       </div>
       <div className="userPortfolioContainer">
-            
-        <img id="imageDisplay" alt="Portfolio" />
+        {loading ? (
+          <p>Loading...</p> 
+        ) : (
+          images.map(image => (
+            <img key={image._id} src={image} />
+          ))
+        )}
       </div>
     </div>
   );
