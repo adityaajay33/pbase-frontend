@@ -37,6 +37,10 @@
     padding: 0px 15px;
     font-size: 18px;
 }
+.logout{
+    padding: 0px 15px;
+    font-size: 18px;
+}
 .logo{
     font-size: 30px;
     margin-left: 20px;
@@ -52,4 +56,5 @@
 
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }

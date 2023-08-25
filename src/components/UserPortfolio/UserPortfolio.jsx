@@ -100,29 +100,31 @@ export default function UserPortfolio() {
 
   return (
     <div>
-      <div className="file-upload-container">
-        <div
-          className="drop-box"
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={handleDrop}
-        >
-          {file ? (
-            <p>File selected: {file.name}</p>
-          ) : (
-            <p>Drag and drop a file here, or click to select a file.</p>
-          )}
-          <input type="file" onChange={handleFileChange} />
+      <div className="primaryContainer">
+        <div className="file-upload-container">
+          <div
+            className="drop-box"
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={handleDrop}
+          >
+            {file ? (
+              <p>File selected: {file.name}</p>
+            ) : (
+              <p>Drag and drop a file here, or click to select a file.</p>
+            )}
+            <input type="file" onChange={handleFileChange} />
+          </div>
+          <button onClick={handleUpload}>Upload Portfolio</button>
         </div>
-        <button onClick={handleUpload}>Upload Portfolio</button>
-      </div>
-      <div className="userPortfolioContainer">
-        {loading ? (
-          <p>Loading...</p> 
-        ) : (
-          images.map(image => (
-            <img key={image._id} src={image} />
-          ))
-        )}
+        <div className="userPortfolioContainer">
+          {loading ? (
+            <p>Loading...</p> 
+          ) : (
+            images.map(image => (
+              <img className="portfolioImagesContainer" key={image._id} src={image} />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );
