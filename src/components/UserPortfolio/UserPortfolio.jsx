@@ -32,7 +32,6 @@ export default function UserPortfolio() {
 
         for (let item of listUrl){
           imgUrls.push('http://localhost:5000/api/portfolios/images/'+String(item));
-          console.log(item);
         }
 
         setImages(imgUrls);
@@ -42,8 +41,6 @@ export default function UserPortfolio() {
       catch(err){
         console.log(err);
       }
-
-      
       
     }
     fetchImages();

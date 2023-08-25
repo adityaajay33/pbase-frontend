@@ -25,10 +25,8 @@ export default function Topbar() {
     user = userData.userId;
   }
   catch(err){
-    console.log(err);
+    console.log("User is not logged in.");
   }
-
-  console.log(user);
     
   return (
     <div className="topbarContainer">

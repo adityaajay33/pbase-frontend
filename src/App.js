@@ -13,8 +13,6 @@ const cookies = new Cookies();
 
 function App() {
 
-  console.log(cookies.get("TOKEN"));
-
 
   return (
     <BrowserRouter>
