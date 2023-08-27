@@ -37,7 +37,7 @@ export default function Feed() {
         const fileID = "http://localhost:5000/api/portfolios/images/"+String(files);
         console.log("Got fileID", fileID);
         console.log(String(user.firstName)+" "+String(fileID));
-
+        
         return {
           ...user,
           fileID: fileID
@@ -60,6 +60,7 @@ export default function Feed() {
       setInitialized(true);
     } else {
       updateUsersWithFileID();
+      
     }
 
     setLoading(false);

@@ -8,6 +8,7 @@ import React, { useState, useEffect } from "react";
 import UserHome from "./pages/userHome/UserHome";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import Cookies from "universal-cookie";
+import ViewPortfolio from "./pages/viewPortfolio/viewPortfolio";
 
 const cookies = new Cookies();
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/pages/login/login.jsx" element={<Login />} />
         <Route path="/pages/userHome/UserHome.jsx" element={<ProtectedRoutes Component={UserHome} />} />
         <Route path="*" element={<NoPage />} />
+        <Route path="/pages/viewPortfolio/viewPortfolio.jsx" element={<ViewPortfolio />} />
       </Routes>
     </BrowserRouter>
   );
