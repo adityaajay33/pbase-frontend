@@ -1,0 +1,12 @@
+.portfolioBorder{
+    width: 80%;
+    margin: 1%;
+    border-radius: 10px;
+    border: solid 10px rgb(28, 97, 40);
+    height: 400px;
+}
+
+.overallComponent{
+
+    width: 80%;
+}
