@@ -6,15 +6,12 @@ import "./portfolioList.css"
 
 const cookies = new Cookies();
 
-export default function PortfolioList() {
-  const receivedToken = cookies.get('TOKEN');
-  const decodedToken = jwtDecode(receivedToken);
+export default function PortfolioList({ userID }) {
+  const user = userID;
 
-  sessionStorage.setItem('userData', JSON.stringify(decodedToken));
-  const userData = JSON.parse(sessionStorage.getItem('userData'));
-  const user = userData.userId;
-
+  console.log(user);
   const linkData = "http://localhost:5000/api/user/userdata/"+String(user);
+
 
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,13 +37,19 @@ export default function PortfolioList() {
         }
     }
     fetchImages();
-  }, [linkData])
+  }, [linkData]);
   
 
   return (
     <div className="overallComponent">
         <div className='portfolioBorder'>
-        
+            {loading ? (
+                <p>Loading...</p> 
+            ) : (
+                images.map(image => (
+                <img className="portfolioImagesContainer" key={image._id} src={image} />
+                ))
+            )}
         </div>
     </div>
   )

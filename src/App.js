@@ -24,7 +24,7 @@ function App() {
         <Route path="/pages/login/login.jsx" element={<Login />} />
         <Route path="/pages/userHome/UserHome.jsx" element={<ProtectedRoutes Component={UserHome} />} />
         <Route path="*" element={<NoPage />} />
-        <Route path="/pages/viewPortfolio/viewPortfolio.jsx" element={<ViewPortfolio />} />
+        <Route path="/pages/viewPortfolio/:id" element={<ViewPortfolio />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,12 +1,20 @@
 .portfolioBorder{
-    width: 80%;
+    width: 68%;
     margin: 1%;
     border-radius: 10px;
-    border: solid 10px rgb(28, 97, 40);
-    height: 400px;
+    border: solid 5px rgb(0, 0, 0);
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .overallComponent{
 
-    width: 80%;
+    width: 60%;
+}
+
+img{
+    align-items: center;
+    justify-content: center;
 }
