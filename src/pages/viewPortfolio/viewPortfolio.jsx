@@ -9,14 +9,14 @@ import "./viewPortfolio.css"
 export default function ViewPortfolio() {
 
   const { id } = useParams();
-  console.log(String(id));
+  console.log(id);
 
   return (
     <div>
         <Topbar />
         <div className="portfolioViewer">
-          <PortfolioList userId={ String(id) } />
-          <UserBackground />
+          <PortfolioList userID={ id } />
+          <UserBackground userID={ id } />
         </div>
         <Footer />
     </div>

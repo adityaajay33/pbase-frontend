@@ -11,13 +11,26 @@
 
 .userPortfolioContainer{
 
-    display: grid;
-    width: 90%;
-    grid-template-columns: 50% 50%;
+    width: 900px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    border: solid black 4px;
+    border-radius: 10px;
+    margin: 10px;
 }
 
 .portfolioImagesContainer{
 
     width: 500px;
     padding: 20px;
+}
+
+.file-upload-container{
+
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

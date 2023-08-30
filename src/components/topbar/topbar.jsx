@@ -31,7 +31,7 @@ export default function Topbar() {
   return (
     <div className="topbarContainer">
         <div className="topbarLeft">
-            <a href="../../pages/home/Home.jsx" className="topbarLinks"><span className="logo">
+            <a href="../../" className="topbarLinks"><span className="logo">
                 PB
             </span></a>
         </div>

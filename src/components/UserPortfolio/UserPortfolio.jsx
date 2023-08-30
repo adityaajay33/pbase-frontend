@@ -107,7 +107,7 @@ export default function UserPortfolio() {
             {file ? (
               <p>File selected: {file.name}</p>
             ) : (
-              <p>Drag and drop a file here, or click to select a file.</p>
+              <p>Select a file here.</p>
             )}
             <input type="file" onChange={handleFileChange} />
           </div>

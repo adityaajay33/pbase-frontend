@@ -37,7 +37,6 @@ export default function Feed() {
         const fileID = "http://localhost:5000/api/portfolios/images/"+String(files);
         console.log("Got fileID", fileID);
         console.log(String(user.firstName)+" "+String(fileID));
-        
         return {
           ...user,
           fileID: fileID
@@ -55,22 +54,10 @@ export default function Feed() {
   };
 
   useEffect(() => {
-    if (!initialized) {
-      fetchUsers();
-      setInitialized(true);
-    } else {
-      updateUsersWithFileID();
-      
-    }
-
+    fetchUsers();
+    updateUsersWithFileID();
     setLoading(false);
-    
-    const interval = setInterval(() => {
-      updateUsersWithFileID();
-    }, 30000);
-  
-    return () => clearInterval(interval);
-  }, [initialized]);
+  }, []);
 
   return (
     <div className='feedPortfolios'>
