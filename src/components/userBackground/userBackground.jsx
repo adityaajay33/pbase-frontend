@@ -10,7 +10,8 @@ export default function UserBackground({ userID }) {
   console.log(linkData);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () => { 
+      
       try {
         const response = await axios.get(linkData);
         console.log(response.data);

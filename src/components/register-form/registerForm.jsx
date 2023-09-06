@@ -45,7 +45,7 @@ export default function RegisterForm() {
   return (
     <div className="registerPage">
       <div className="boxWhite">
-        <div className="titleReg">Register</div>
+        <div className="titleReg"> Register </div>
 
         <Form onSubmit={(e)=>handleSubmit(e)}>
 
