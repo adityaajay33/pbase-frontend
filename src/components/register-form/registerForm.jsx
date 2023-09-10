@@ -10,6 +10,7 @@ export default function RegisterForm() {
 
   const [firstName, SetFirstName] = useState("");
   const [lastName, SetLastName] = useState("");
+  const [program, SetProgram] = useState("");
   const [institution, SetInstitution] = useState("");
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
@@ -26,6 +27,7 @@ export default function RegisterForm() {
       data:{
         firstName,
         lastName,
+        program,
         institution,
         email,
         password
@@ -76,6 +78,19 @@ export default function RegisterForm() {
               </Form.Group>
             </Col>
 
+          </Row>
+
+          <Row>
+            <Form.Group>
+              <Form.Label>Program</Form.Label>
+              <Form.Control
+                type="text"
+                name="Program"
+                value={program}
+                onChange={(e) => SetProgram(e.target.value)}
+                placeholder="Program"
+              />
+            </Form.Group>
           </Row>
 
           <Row>
